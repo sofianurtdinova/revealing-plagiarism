@@ -33,6 +33,7 @@ pip install -r requirements.txt
 
 ## Этап 1. Примерная структура проекта
 
+```
 revealing-plagiarism/
 │
 ├── README.md
@@ -51,3 +52,4 @@ revealing-plagiarism/
 │   ├── tbd.py
 │   └── ...
 └── ...
+```
