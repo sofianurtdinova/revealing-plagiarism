@@ -2,6 +2,27 @@
 Here is the main logic for text processing, plagiarism detection, and text improving.
 """
 
+import logging
+import nltk
+from pymorphy2 import MorphAnalyzer
+
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
+morph = MorphAnalyzer()
+russian_stopwords = set(nltk.corpus.stopwords.words('russian'))
+
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
 
 class TextProcessor:
     """
@@ -15,6 +36,7 @@ class TextProcessor:
         Args:
             stop_words (list[str]): A list of stop words to remove.
         """
+        self.stop_words = set(stop_words) if stop_words else russian_stopwords
 
     def preprocess(self, text: str):
         """
@@ -23,7 +45,16 @@ class TextProcessor:
         Args:
             text (str): The input text.
         """
-        pass
+        if not text:
+            return None
+
+        text_lower = text.lower()
+
+        tokens = nltk.word_tokenize(text_lower)
+        tokens = [token for token in tokens if token.isalpha() and token not in self.stop_words]
+        lemmatized_tokens = [morph.parse(token)[0].normal_form for token in tokens]
+
+        return lemmatized_tokens
 
     def process_text(self, text_content):
         """
@@ -33,6 +64,8 @@ class TextProcessor:
             text_content (str): The raw text content.
 
         """
+        logger.info("Processing text...")
+        return self.preprocess(text_content)
 
 
 class PlagiarismRevealer:

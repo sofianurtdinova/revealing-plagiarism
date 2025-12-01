@@ -10,6 +10,8 @@ requires-python = ">=3.11"
 dependencies = [
     "nltk==3.9.1", # для обработки
     "pymorphy2==0.9.1", # для лемматизации РЯ
+    "textdistance==4.6.0", # для подсчета расстояний
+    "scikit-learn==1.5.2" # косинусное сходство
 ]
 
 [tool.poetry.group.dev.dependencies]
@@ -17,6 +19,7 @@ pytest = "8.4.1"
 ruff = "0.14.0"
 sphinx = "8.2.3"
 doc8 = "^1.0.0"
+pre-commit = "4.2.0"
 
 [tool.ruff]
 line-length = 120

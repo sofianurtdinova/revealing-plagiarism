@@ -1,0 +1,19 @@
+repos:
+  - repo: local
+    hooks:
+      - id: doc8-lint
+        name: doc8 style check
+        entry: doc8
+        language: python
+        types: [rst]
+        args: [
+          "docs"
+        ]
+        additional_dependencies: [doc8]
+        always_run: true
+  - repo: https://github.com/astral-sh/ruff-pre-commit  # официальный репозиторий с хуками для ruff
+    rev: v0.14.0    # версия хуков ruff-pre-commit
+    hooks:
+      - id: ruff-check # линтер для проверки кода по правилам PEP8 и ruff
+        args: [ --fix ]
+      - id: ruff-format  # автоформатирование кода по правилам ruff
