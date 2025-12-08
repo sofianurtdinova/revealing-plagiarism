@@ -19,8 +19,7 @@ except LookupError:
 morph = MorphAnalyzer()
 russian_stopwords = set(nltk.corpus.stopwords.words('russian'))
 
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 
@@ -64,7 +63,7 @@ class TextProcessor:
             text_content (str): The raw text content.
 
         """
-        logger.info("Processing text...")
+        logger.info('Processing text...')
         return self.preprocess(text_content)
 
 

@@ -20,7 +20,9 @@ class Reporter:
         """
         pass
 
-    def generate_rewrite_report(self, original_text: str, rewritten_text: str, original_similarity: float, final_similarity: float):
+    def generate_rewrite_report(
+        self, original_text: str, rewritten_text: str, original_similarity: float, final_similarity: float
+    ):
         """
         Generates a string report for text rewriting results.
 

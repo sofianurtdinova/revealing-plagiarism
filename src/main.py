@@ -1,5 +1,4 @@
 class TextProcessor:
-
     def __init__(self):
         pass
 
@@ -11,7 +10,6 @@ class TextProcessor:
 
 
 class PlagiarismRevealer:
-
     def __init__(self):
         pass
 
@@ -23,7 +21,6 @@ class PlagiarismRevealer:
 
 
 class TextImprover:
-
     def __init__(self):
         pass
 
@@ -38,5 +35,5 @@ def main():
     pass
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
