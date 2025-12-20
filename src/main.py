@@ -18,7 +18,7 @@ def main():
     corpus_dir = base_dir / 'src' / 'assets' / 'corpus'
     json_path = base_dir / 'src' / 'assets' / 'synonyms.json'
 
-    path_to_check = base_dir / 'assets' / 'corpus_plagiarized' / 'eco_3_pl.txt'
+    path_to_check = base_dir / 'src' / 'assets' / 'corpus_plagiarised' / 'eco_3_pl.txt'
 
     create_database()
     SynonymLoader.load_from_json(json_path)
@@ -55,11 +55,11 @@ def main():
 
     bound = 0.15
     if best_match['filename'] and best_match['score'] > bound:
-        print(f'\nНайдено сходство с документом: {best_match["filename"]}')
+        logger.info(f'\nНайдено сходство с документом: {best_match["filename"]}')
         print(reporter.generate_plagiarism_report(best_match['data']))
 
-        syn_map = load_synonyms_dict_from_db()
-        improver = TextImprover(syn_map)
+        synonyms = load_synonyms_dict_from_db()
+        improver = TextImprover(synonyms)
         improved_text = improver.rewrite_text(text_to_check)
 
         new_res = revealer.find_plagiarism(best_match['content'], improved_text, processor)
@@ -73,7 +73,7 @@ def main():
             )
         )
     else:
-        print('\nТекст прошел проверку. Совпадений в корпусе не обнаружено.')
+        logger.info('\nТекст прошел проверку на плагиат. Совпадений в корпусе не обнаружено.')
 
 
 if __name__ == '__main__':

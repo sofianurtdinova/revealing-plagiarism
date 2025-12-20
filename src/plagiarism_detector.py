@@ -58,43 +58,43 @@ class PlagiarismRevealer:
     Logic for detecting similarities between texts.
     """
 
-    def calculate_similarity(self, text1: str, text2: str) -> float:
+    def calculate_similarity(self, orig_text: str, plag_text: str) -> float:
         """
         Calculate cosine similarity between two raw texts.
 
         Args:
-            text1 (str): First text.
-            text2 (str): Second text.
+            orig_text (str): First text.
+            plag_text (str): Second text.
 
         Returns:
             float: Similarity score between 0.0 and 1.0.
         """
-        if not text1.strip() or not text2.strip():
+        if not orig_text.strip() or not plag_text.strip():
             return 0.0
 
         vectorizer = TfidfVectorizer()
         try:
-            tfidf = vectorizer.fit_transform([text1, text2])
+            tfidf = vectorizer.fit_transform([orig_text, plag_text])
             return float(cosine_similarity(tfidf[0:1], tfidf[1:2])[0][0])
         except ValueError:
             return 0.0
 
-    def find_plagiarism(self, original: str, plagiated: str, processor: TextProcessor) -> dict:
+    def find_plagiarism(self, original: str, plagiat: str, processor: TextProcessor) -> dict:
         """
         Comprehensive check using multiple metrics.
 
         Args:
             original (str): The source text.
-            plagiated (str): The text to be checked.
+            plagiat (str): The text to be checked.
             processor (TextProcessor): Processor for tokenization.
 
         Returns:
             dict: Dictionary containing various similarity metrics.
         """
         tokens_orig = processor.preprocess(original)
-        tokens_check = processor.preprocess(plagiated)
+        tokens_check = processor.preprocess(plagiat)
 
-        cos_sim = self.calculate_similarity(original, plagiated)
+        cos_sim = self.calculate_similarity(original, plagiat)
 
         set_orig, set_check = set(tokens_orig), set(tokens_check)
         jac_sim = len(set_orig & set_check) / len(set_orig | set_check) if (set_orig | set_check) else 0
@@ -109,7 +109,7 @@ class PlagiarismRevealer:
 
 class TextImprover:
     """
-    Rewrite text using synonyms from the database to reduce plagiarism.
+    Rewrites text using synonyms from the database to reduce plagiarism.
     """
 
     def __init__(self, synonyms_dict: dict[str, list[str]]):

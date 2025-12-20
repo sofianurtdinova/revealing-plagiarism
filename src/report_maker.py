@@ -29,7 +29,7 @@ class Reporter:
     def generate_rewrite_report(self, rewritten: str, old_sim: float, new_sim: float) -> str:
         """
         Args:
-            rewritten (str): Text after.
+            rewritten (str): Text after improvement.
             old_sim (float): Initial similarity score.
             new_sim (float): Similarity score after rewrite.
 

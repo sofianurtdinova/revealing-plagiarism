@@ -48,7 +48,6 @@ revealing-plagiarism/
 ├── database/
 │   ├── __init__.py
 │   ├── connection.py
-│   ├── db_models.py
 │   ├── db_utils.py
 ├── src/
 │   ├── assets
