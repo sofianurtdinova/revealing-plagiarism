@@ -31,7 +31,7 @@ class TextProcessor:
             self.stop_words = set(stop_words) if stop_words else set(nltk.corpus.stopwords.words('russian'))
         except LookupError:
             nltk.download('stopwords')
-            nltk.download('punkt')
+            nltk.download('punkt_tab')
             self.stop_words = set(nltk.corpus.stopwords.words('russian'))
 
     def preprocess(self, text: str) -> list[str]:

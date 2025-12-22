@@ -36,6 +36,11 @@ poetry install
 ```bash
 poetry run python src/main.py
 ```
+* Если возникает ошибка с нахождением модулей, попробуйте указать PYTHONPATH и заново запустить программу:
+
+```bash
+$env:PYTHONPATH = "$pwd;" + $env:PYTHONPATH # на macOS: export PYTHONPATH=$pwd:$PYTHONPATH
+```
 
 ## Cтруктура проекта
 
