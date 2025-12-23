@@ -3,7 +3,9 @@ Checks Plagiarism Revealer functionality.
 """
 
 import pytest
-from src.plagiarism_detector import TextProcessor, PlagiarismRevealer  # from plagiarism_detector import ...
+# from src.plagiarism_detector import TextProcessor, PlagiarismRevealer  # было у вас
+from plagiarism_detector import TextProcessor, PlagiarismRevealer  # правильно
+
 
 class TestPlagiarismRevealer:
     """

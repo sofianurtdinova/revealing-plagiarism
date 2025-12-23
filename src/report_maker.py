@@ -3,7 +3,7 @@ Generating reports on plagiarism detection and text improvement.
 """
 
 
-class Reporter:
+class Reporter:  # Все методы этого класса спокойно могли быть функциями
     """
     Generates reports for plagiarism detection and text improvement.
     """

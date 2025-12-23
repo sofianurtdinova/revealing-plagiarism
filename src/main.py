@@ -1,10 +1,10 @@
 import logging
 from pathlib import Path
 
-from database import create_database, load_synonyms_dict_from_db  # from database import ...
-from plagiarism_detector import PlagiarismRevealer, TextImprover, TextProcessor  # from .plagiarism_detector import ...
-from report_maker import Reporter  # from .report_maker import Reporter
-from utils import SynonymLoader  # from .utils import SynonymLoader
+from database import create_database, load_synonyms_dict_from_db
+from plagiarism_detector import PlagiarismRevealer, TextImprover, TextProcessor
+from report_maker import Reporter
+from utils import SynonymLoader
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)

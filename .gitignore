@@ -49,6 +49,7 @@ coverage.xml
 docs/_build/
 
 # Environments
+# дубль .idea
 .idea
 .env
 .venv/
@@ -64,3 +65,5 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# Судя по всему, тоже должна быть в игноре
+plagiarism.db
