@@ -36,37 +36,39 @@ poetry install
 ```bash
 poetry run python src/main.py
 ```
+* Если возникает ошибка с нахождением модулей, попробуйте указать PYTHONPATH и заново запустить программу:
+
+```bash
+$env:PYTHONPATH = "$pwd;" + $env:PYTHONPATH # на macOS: export PYTHONPATH=$pwd:$PYTHONPATH
+```
 
 ## Cтруктура проекта
-
-(Набор файлов я и так вижу. Нет описания структуры)
 
 ```
 revealing-plagiarism/
 │
-├── README.md
+├── README.md # Краткое описание проекта
 ├── .gitignore
 ├── pyproject.toml
-├── database/  (должен быть под src)
+├── database/ # Модуль для работы с БД
 │   ├── __init__.py
-│   ├── connection.py
-│   ├── db_utils.py
+│   ├── connection.py # Подключение к БД
+│   ├── db_utils.py # Логика работы с БД
 ├── src/
 │   ├── assets
-│       ├── corpus/
-│       ├── corpus_plagiarised/
-│   ├── utils
+│       ├── corpus/ # Корпус оригинальных текстов
+│       ├── corpus_plagiarised/ # Корпус сплагиаченных текстов (для выбора)
+│   ├── utils # Модуль для работы с синонимами
 │       ├── __init__.py
-│       ├── data_loader.py
-│   ├── __init__.py   (не нужен. src - это не модуль)
-│   ├── plagiarism_detector.py           
+│       ├── data_loader.py # Загрузка синонимов
+│   ├── __init__.py 
+│   ├── plagiarism_detector.py #           
 │   ├── report_maker.py          
 │   └── main.py              
 ├── tests/
-│   ├── __init__.py  (не нужен. tests - это не модуль)
-│   ├── test_text_processor.py
-│   ├── test_plagiarism_revealer.py
-│   └── test_text_improver.py
+│   ├── test_text_processor.py # Тесты класса для обработки текста
+│   ├── test_plagiarism_revealer.py # Тесты класса для выявления плагиата
+│   └── test_text_improver.py # Тесты класса для улучшения текста
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── poetry.lock

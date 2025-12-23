@@ -6,7 +6,7 @@ authors = [
     {name = "Sofia Nurtdinova", email = "asnurtdinova2@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.12,<4.0"  # Все версии нужно строго фиксировать, в том числе питон, например "==3.12.*"
+requires-python = "==3.12.*"
 dependencies = [
     "nltk==3.9.1", # для обработки языка
     "textdistance==4.6.0", # для подсчета расстояний
@@ -15,9 +15,6 @@ dependencies = [
     "pymorphy3 (>=2.0.6,<3.0.0)" # для обработки языка
 ]
 
-# Чтобы при подключении окружения не было `Error: The current project could not be installed ...`
-# нужно явно отключить сборку пакета - `tool.poetry.package-mode = False`
-
 [tool.poetry.group.dev.dependencies]
 pytest = "8.4.1"
 ruff = "0.14.0"
@@ -25,7 +22,7 @@ pre-commit = "4.2.0"
 
 [tool.ruff]
 line-length = 120
-target-version = 'py311'  # Вы даете диапозон версий питона, но для Ruff указываете 1 конкретную. Это некорректно
+target-version = 'py312'
 exclude = [
     '**/tests/**',
 ]
@@ -73,3 +70,6 @@ convention = 'pep257'  # использовать стандарт PEP 257 дл�
 
 [tool.ruff.lint.flake8-quotes]
 inline-quotes = 'single'  # линтер Ruff будет приводить строки к одинарным кавычкам '...' вместо двойных "..."
+
+[tool.poetry]
+package-mode = false

@@ -1,1 +1,7 @@
-# В вашем случае, не должен был быть пустым
+"""Loading synonyms module for plagiarism detector."""
+
+from .data_loader import SynonymLoader
+
+__all__ = [
+    "SynonymLoader"
+]
